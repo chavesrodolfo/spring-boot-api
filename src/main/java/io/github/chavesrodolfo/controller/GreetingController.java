@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.github.chavesrodolfo.model.Greeting;
+
 @RestController
 @RequestMapping("/api/v1")
 public class GreetingController {
@@ -12,7 +14,17 @@ public class GreetingController {
 	private static final String template = "Hello, %s!";
 
 	@GetMapping("/hello")
-	public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return String.format(template, name);
+	public Greeting greetingPublic(@RequestParam(value = "name", defaultValue = "World") String name) {
+		return new Greeting(String.format(template, name));
+	}
+
+	@GetMapping("/user")
+	public Greeting greetingUser(@RequestParam(value = "name", defaultValue = "User") String name) {
+		return new Greeting(String.format(template, name));
+	}
+
+	@GetMapping("/admin")
+	public Greeting greetingAdmin(@RequestParam(value = "name", defaultValue = "Admin") String name) {
+		return new Greeting(String.format(template, name));
 	}
 }
