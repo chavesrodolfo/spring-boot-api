@@ -1,17 +1,22 @@
 package io.github.chavesrodolfo.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.chavesrodolfo.model.AuthenticationRequest;
 import io.github.chavesrodolfo.model.AuthenticationResponse;
+import io.github.chavesrodolfo.model.MessageResponse;
 import io.github.chavesrodolfo.service.CustomUserDetailsService;
 import io.github.chavesrodolfo.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -47,6 +52,18 @@ public class AuthController {
         final String jwt = jwtUtil.generateToken(userDetails);
 
         return new AuthenticationResponse(jwt);
+    }
+
+    @PutMapping("/password")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    public MessageResponse changePassword(Principal principal, @RequestBody PasswordChanger passwordChanger) throws Exception {
+        userDetailsService.changePassword(principal.getName(), passwordChanger.oldPassword, passwordChanger.newPassword);
+        return new MessageResponse("success");
+    }
+
+    static class PasswordChanger {
+        public String oldPassword;
+        public String newPassword;
     }
 
 

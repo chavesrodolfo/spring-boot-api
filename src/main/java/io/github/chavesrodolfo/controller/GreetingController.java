@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.chavesrodolfo.model.Greeting;
+import io.github.chavesrodolfo.model.MessageResponse;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -16,19 +16,19 @@ public class GreetingController {
 
 	@GetMapping("/hello")
 	@PreAuthorize("isAuthenticated()")
-	public Greeting greetingHello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return new Greeting(String.format(template, name));
+	public MessageResponse greetingHello(@RequestParam(value = "name", defaultValue = "World") String name) {
+		return new MessageResponse(String.format(template, name));
 	}
 
 	@GetMapping("/user")
 	@PreAuthorize("hasRole('USER')")
-	public Greeting greetingUser(@RequestParam(value = "name", defaultValue = "User") String name) {
-		return new Greeting(String.format(template, name));
+	public MessageResponse greetingUser(@RequestParam(value = "name", defaultValue = "User") String name) {
+		return new MessageResponse(String.format(template, name));
 	}
 
 	@GetMapping("/admin")
 	@PreAuthorize("hasRole('ADMIN')")
-	public Greeting greetingAdmin(@RequestParam(value = "name", defaultValue = "Admin") String name) {
-		return new Greeting(String.format(template, name));
+	public MessageResponse greetingAdmin(@RequestParam(value = "name", defaultValue = "Admin") String name) {
+		return new MessageResponse(String.format(template, name));
 	}
 }
