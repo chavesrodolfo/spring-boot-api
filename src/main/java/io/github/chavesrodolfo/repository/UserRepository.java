@@ -1,4 +1,4 @@
-package io.github.chavesrodolfo.config.repository;
+package io.github.chavesrodolfo.repository;
 
 import java.util.Optional;
 

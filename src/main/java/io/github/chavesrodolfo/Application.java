@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import io.github.chavesrodolfo.config.repository.UserRepository;
+import io.github.chavesrodolfo.repository.UserRepository;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackageClasses = UserRepository.class)
