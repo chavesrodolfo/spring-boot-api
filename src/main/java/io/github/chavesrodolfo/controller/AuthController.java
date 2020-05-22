@@ -58,7 +58,7 @@ public class AuthController {
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public MessageResponse changePassword(Principal principal, @RequestBody PasswordChanger passwordChanger) throws Exception {
         userDetailsService.changePassword(principal.getName(), passwordChanger.oldPassword, passwordChanger.newPassword);
-        return new MessageResponse("success");
+        return new MessageResponse("success", "OK");
     }
 
     static class PasswordChanger {

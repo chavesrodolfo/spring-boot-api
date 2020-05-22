@@ -7,6 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public class MessageResponse {
 
-    private String response;
-    
+    private final String status;
+    private final String message;
+
 }

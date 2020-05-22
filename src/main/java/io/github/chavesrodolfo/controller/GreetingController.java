@@ -17,18 +17,18 @@ public class GreetingController {
 	@GetMapping("/hello")
 	@PreAuthorize("isAuthenticated()")
 	public MessageResponse greetingHello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return new MessageResponse(String.format(template, name));
+		return new MessageResponse("Success", String.format(template, name));
 	}
 
 	@GetMapping("/user")
 	@PreAuthorize("hasRole('USER')")
 	public MessageResponse greetingUser(@RequestParam(value = "name", defaultValue = "User") String name) {
-		return new MessageResponse(String.format(template, name));
+		return new MessageResponse("Success", String.format(template, name));
 	}
 
 	@GetMapping("/admin")
 	@PreAuthorize("hasRole('ADMIN')")
 	public MessageResponse greetingAdmin(@RequestParam(value = "name", defaultValue = "Admin") String name) {
-		return new MessageResponse(String.format(template, name));
+		return new MessageResponse("Success", String.format(template, name));
 	}
 }
