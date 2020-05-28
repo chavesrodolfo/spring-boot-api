@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.chavesrodolfo.model.AuthenticationRequest;
-import io.github.chavesrodolfo.model.AuthenticationResponse;
-import io.github.chavesrodolfo.model.MessageResponse;
-import io.github.chavesrodolfo.service.CustomUserDetailsService;
+import io.github.chavesrodolfo.model.dto.AuthenticationRequest;
+import io.github.chavesrodolfo.model.dto.AuthenticationResponse;
+import io.github.chavesrodolfo.model.dto.MessageResponse;
+import io.github.chavesrodolfo.service.impl.CustomUserDetailsServiceImpl;
 import io.github.chavesrodolfo.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +30,7 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private CustomUserDetailsService userDetailsService;
+    private CustomUserDetailsServiceImpl userDetailsService;
 
     @Autowired
     private JwtUtil jwtUtil;

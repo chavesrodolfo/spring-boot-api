@@ -1,4 +1,4 @@
-package io.github.chavesrodolfo.model;
+package io.github.chavesrodolfo.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

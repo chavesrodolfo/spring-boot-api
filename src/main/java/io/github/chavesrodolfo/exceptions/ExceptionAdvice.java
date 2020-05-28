@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import io.github.chavesrodolfo.model.MessageResponse;
+import io.github.chavesrodolfo.model.dto.MessageResponse;
 
 @ControllerAdvice
 public class ExceptionAdvice {
@@ -15,5 +15,12 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.PRECONDITION_REQUIRED)
     MessageResponse invalidPasswordPatternHandler(InvalidPasswordPatternException e) {
         return new MessageResponse(InvalidPasswordPatternException.class.getSimpleName(), e.getMessage());
+    }
+
+    @ResponseBody
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    MessageResponse userNotFoundHandler(UserNotFoundException e) {
+        return new MessageResponse(UserNotFoundException.class.getSimpleName(), e.getMessage());
     }
 }

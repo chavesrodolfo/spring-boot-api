@@ -1,4 +1,4 @@
-package io.github.chavesrodolfo.model;
+package io.github.chavesrodolfo.model.dto;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import io.github.chavesrodolfo.model.User;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
