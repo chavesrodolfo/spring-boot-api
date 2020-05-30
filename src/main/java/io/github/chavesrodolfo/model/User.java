@@ -10,10 +10,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter @Setter
 @EntityListeners(AuditingEntityListener.class)
 public class User extends Auditable<String>{
 
