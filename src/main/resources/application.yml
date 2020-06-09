@@ -8,7 +8,9 @@ spring:
         url: jdbc:mysql://localhost:3306/springboot?createDatabaseIfNotExist=true
         username: root
         password: root
-
+        initialization-mode: always
+    banner:
+        location: classpath:/banner-development.txt 
     jpa:
         hibernate:
             ddl-auto: create-drop
@@ -18,10 +20,12 @@ spring:
                 dialect: org.hibernate.dialect.MySQL5Dialect
                 #format_sql: true
         show-sql: true
+
 logging:
     level:
         io.github.chavesrodolfo: DEBUG
         org.hibernate.SQL: DEBUG
+
 jwt:
     secretkey: your_strong_secret_key
 
@@ -37,6 +41,6 @@ management:
                 include: info, health, metrics, loggers, env, caches, prometheus
     endpoint:
         health:
-            show-details: when_authorized
+            show-details: WHEN_AUTHORIZED
 
     

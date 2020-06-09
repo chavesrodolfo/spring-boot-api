@@ -11,10 +11,11 @@ services:
     depends_on: 
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/springboot?createDatabaseIfNotExist=true
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/springbootprod
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-      SPRING_APPLICATION_NAME: spring-boot-app1
+      SPRING_APPLICATION_NAME: spring-boot-app
 
   db:
     image: mysql
